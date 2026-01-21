@@ -1,0 +1,255 @@
+/* RESET BÁSICO */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* FUNDO GERAL */
+body {
+  background-color: #15212a;
+  color: #ffffff;
+}
+
+/* TOPO */
+.topo {
+  text-align: center;
+  padding: 20px;
+}
+
+.topo h1 {
+  font-size: 28px;
+}
+
+.topo p {
+  font-size: 14px;
+  color: #9d9c9c;
+}
+
+/* CONTAINER */
+.container {
+  padding: 20px;
+  display: grid;
+  gap: 20px;
+}
+
+/* TÍTULOS DAS SEÇÕES */
+.produtos h2,
+.resumo h2 {
+  margin-bottom: 10px;
+}
+
+/* CARD DE PRODUTO */
+.card {
+  background-color: #e8ddcf;
+  color: #15212a;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  margin-bottom: 5px;
+}
+
+.card p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* BOTÃO ADICIONAR */
+.card button {
+  background-color: #be5932;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* RESUMO DO PEDIDO */
+.resumo {
+  background-color: #ffffff;
+  color: #15212a;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* LISTA DO PEDIDO */
+.resumo ul {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+/* TOTAL */
+.total {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* BOTÃO FINALIZAR */
+.finalizar {
+  width: 100%;
+  background-color: #be5932;
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ===========================
+   INPUTS E TEXTAREA
+=========================== */
+
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  margin-top: 6px;
+  background-color: #fff;
+  color: #15212a;
+}
+
+textarea {
+  min-height: 90px;
+  resize: none;
+}
+
+/* ===========================
+   SEÇÕES DO RESUMO
+=========================== */
+
+.cliente,
+.observacao,
+.pagamento {
+  margin-top: 25px;
+}
+
+/* ===========================
+   BOTÕES + / –
+=========================== */
+
+.resumo ul li button {
+  background-color: #be5932;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.resumo ul li button:hover {
+  opacity: 0.9;
+}
+
+/* ===========================
+   BOTÃO FINALIZAR
+=========================== */
+
+.finalizar {
+  margin-top: 25px;
+  width: 100%;
+  background-color: #be5932;
+  color: #ffffff;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.finalizar:hover {
+  opacity: 0.95;
+}
+
+/* ===========================
+   RADIO BUTTONS (PAGAMENTO)
+=========================== */
+
+.pagamento label {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.pagamento input[type="radio"] {
+  margin-right: 8px;
+}
+
+/* ===========================
+   AJUSTES MOBILE (APP FEEL)
+=========================== */
+
+@media (max-width: 768px) {
+
+  body {
+    font-size: 15px;
+  }
+
+  .topo h1 {
+    font-size: 24px;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  .produtos h2,
+  .resumo h2 {
+    font-size: 18px;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  .card h3 {
+    font-size: 16px;
+  }
+
+  .card p {
+    font-size: 13px;
+  }
+
+  .preco {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  /* RESUMO */
+  .resumo ul li {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* BOTÕES + / - */
+  .resumo ul li button {
+    padding: 6px 14px;
+    font-size: 16px;
+  }
+
+  /* INPUTS */
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    font-size: 15px;
+  }
+
+  /* FINALIZAR */
+  .finalizar {
+    font-size: 18px;
+    padding: 16px;
+  }
+}
