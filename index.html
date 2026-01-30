@@ -1,142 +1,174 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Cardápio Digital | Fazarte</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Cardápio Digital | Fazarte</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
+
+<style>
+.tabs{
+  display:flex;
+  gap:10px;
+  padding:10px;
+  background:#111;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.tabs button{
+  flex:1;
+  padding:12px;
+  border:none;
+  background:#333;
+  color:#fff;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.tabs button.active{
+  background:#c55a2b;
+}
+
+.categoria{
+  display:none;
+}
+
+.categoria.active{
+  display:block;
+}
+
+.finalizar-btn{
+  width:100%;
+  padding:16px;
+  background:#c55a2b;
+  color:#fff;
+  border:none;
+  font-size:18px;
+  margin-top:15px;
+  cursor:pointer;
+}
+</style>
+
 </head>
+
 <body>
 
-  <!-- TOPO -->
-  <header class="topo">
-    <h1>Cardápio Digital</h1>
-    <p>Protótipo desenvolvido pela Fazarte</p>
-  </header>
+<header class="topo">
+  <h1>Cardápio Digital</h1>
+  <p>Protótipo desenvolvido pela Fazarte</p>
+</header>
 
-  <main class="container">
+<div class="tabs">
+  <button class="active" onclick="mostrarCategoria('lanches',this)">Lanches</button>
+  <button onclick="mostrarCategoria('bebidas',this)">Bebidas</button>
+  <button onclick="mostrarCategoria('pedido',this)">Pedido</button>
+</div>
 
-    <!-- PRODUTOS -->
-    <section class="produtos">
-      <h2>Lanches</h2>
+<main class="container">
 
-      <div class="card">
-        <h3>Burger Clássico</h3>
-        <p>Pão, carne, queijo e salada</p>
-        <p class="preco">R$ 20,00</p>
-        <button onclick="adicionarItem('Burger Clássico', 20)">
-          Adicionar
-        </button>
-      </div>
+<!-- LANCHES -->
+<section id="lanches" class="categoria active">
 
-      <div class="card">
-        <h3>Burger Bacon</h3>
-        <p>Pão, carne, queijo, bacon e molho especial</p>
-        <p class="preco">R$ 24,00</p>
-        <button onclick="adicionarItem('Burger Bacon', 24)">
-          Adicionar
-        </button>
-      </div>
+  <div class="card">
+    <h3>Burger Clássico</h3>
+    <p>R$ 20</p>
+    <button onclick="adicionarItem('Burger Clássico',20)">Adicionar</button>
+  </div>
 
-      <div class="card">
-        <h3>Burger Premium</h3>
-        <p>Pão brioche, carne dupla, queijo e cebola caramelizada</p>
-        <p class="preco">R$ 32,00</p>
-        <button onclick="adicionarItem('Burger Premium', 32)">
-          Adicionar
-        </button>
-      </div>
-    </section>
+  <div class="card">
+    <h3>Burger Bacon</h3>
+    <p>R$ 24</p>
+    <button onclick="adicionarItem('Burger Bacon',24)">Adicionar</button>
+  </div>
 
-    <section class="produtos">
-      <h2>Bebidas</h2>
+  <div class="card">
+    <h3>Burger Duplo</h3>
+    <p>R$ 28</p>
+    <button onclick="adicionarItem('Burger Duplo',28)">Adicionar</button>
+  </div>
 
-      <div class="card">
-        <h3>Refrigerante Lata</h3>
-        <p>350ml</p>
-        <p class="preco">R$ 6,00</p>
-        <button onclick="adicionarItem('Refrigerante Lata', 6)">
-          Adicionar
-        </button>
-      </div>
+  <div class="card">
+    <h3>Burger Premium</h3>
+    <p>R$ 32</p>
+    <button onclick="adicionarItem('Burger Premium',32)">Adicionar</button>
+  </div>
 
-      <div class="card">
-        <h3>Refrigerante 2L</h3>
-        <p>Ideal para compartilhar</p>
-        <p class="preco">R$ 12,00</p>
-        <button onclick="adicionarItem('Refrigerante 2L', 12)">
-          Adicionar
-        </button>
-      </div>
-    </section>
+  <div class="card">
+    <h3>Burger Salada</h3>
+    <p>R$ 22</p>
+    <button onclick="adicionarItem('Burger Salada',22)">Adicionar</button>
+  </div>
 
-    <!-- RESUMO DO PEDIDO -->
-    <section class="resumo">
-      <h2>Seu pedido</h2>
+  <div class="card">
+    <h3>Burger de Frango</h3>
+    <p>R$ 24</p>
+    <button onclick="adicionarItem('Burger de Frango',24)">Adicionar</button>
+  </div>
 
-      <ul id="lista-pedido"></ul>
+</section>
 
-      <p class="total">
-        Total: R$ <span id="total">0</span>
-      </p>
+<!-- BEBIDAS -->
+<section id="bebidas" class="categoria">
 
-      <!-- DADOS DO CLIENTE -->
-      <div class="cliente">
-        <h3>Seus dados</h3>
+  <div class="card">
+    <h3>Refrigerante Lata</h3>
+    <p>R$ 6</p>
+    <button onclick="adicionarItem('Refrigerante Lata',6)">Adicionar</button>
+  </div>
 
-        <label>Nome</label><br>
-        <input type="text" id="nomeCliente" placeholder="Seu nome"><br><br>
+  <div class="card">
+    <h3>Refrigerante 600ml</h3>
+    <p>R$ 8</p>
+    <button onclick="adicionarItem('Refrigerante 600ml',8)">Adicionar</button>
+  </div>
 
-        <label>WhatsApp</label><br>
-        <input type="text" id="whatsCliente" placeholder="(24) 9xxxx-xxxx">
-      </div>
+  <div class="card">
+    <h3>Refrigerante 2L</h3>
+    <p>R$ 12</p>
+    <button onclick="adicionarItem('Refrigerante 2L',12)">Adicionar</button>
+  </div>
 
-      <!-- OBSERVAÇÕES (AQUI AINDA NÃO ESTILIZADO) -->
-      <div class="observacao">
-        <h3>Observações</h3>
-        <textarea id="observacao" placeholder="Ex: sem cebola, bem passado, adicionar molho..."></textarea>
-      </div>
+  <div class="card">
+    <h3>Água</h3>
+    <p>R$ 4</p>
+    <button onclick="adicionarItem('Água',4)">Adicionar</button>
+  </div>
 
-      <!-- PAGAMENTO -->
-      <div class="pagamento">
-        <h3>Forma de pagamento</h3>
+</section>
 
-        <label>
-          <input type="radio" name="pagamento" onclick="selecionarPagamento('pix')">
-          Pix
-        </label><br>
+<!-- PEDIDO -->
+<section id="pedido" class="categoria">
 
-        <label>
-          <input type="radio" name="pagamento" onclick="selecionarPagamento('cartao')">
-          Cartão
-        </label><br>
+  <ul id="lista-pedido"></ul>
 
-        <label>
-          <input type="radio" name="pagamento" onclick="selecionarPagamento('dinheiro')">
-          Dinheiro
-        </label>
+  <p>Total: R$ <span id="total">0</span></p>
 
-        <div id="pix-info" style="display:none; margin-top:10px;">
-          <p><strong>Chave Pix:</strong> pix@fazarte.com</p>
-          <p>Após realizar o Pix, envie o comprovante no WhatsApp.</p>
-        </div>
+  <input id="nomeCliente" placeholder="Nome"><br><br>
+  <input id="whatsCliente" placeholder="WhatsApp"><br><br>
+  <input id="enderecoCliente" placeholder="Rua, número, bairro"><br><br>
 
-        <div id="troco-info" style="display:none; margin-top:10px;">
-          <label>Troco para quanto?</label><br>
-          <input type="number" id="troco" placeholder="Ex: 50 ou 100">
-        </div>
-      </div>
+  <textarea id="observacao" placeholder="Observações"></textarea><br><br>
 
-      <!-- FINALIZAR -->
-      <button class="finalizar" onclick="finalizarPedido()">
-        Finalizar no WhatsApp
-      </button>
+  <label><input type="radio" name="pagamento" onclick="selecionarPagamento('pix')"> Pix</label>
+  <label><input type="radio" name="pagamento" onclick="selecionarPagamento('cartao')"> Cartão</label>
+  <label><input type="radio" name="pagamento" onclick="selecionarPagamento('dinheiro')"> Dinheiro</label>
 
-    </section>
+  <div id="troco-info" style="display:none">
+    <input id="troco" placeholder="Troco para">
+  </div>
 
-  </main>
+  <button class="finalizar-btn" onclick="finalizarPedido()">
+    Finalizar no WhatsApp
+  </button>
 
-  <script src="script.js"></script>
+</section>
+
+</main>
+
+<script src="script.js?v=40"></script>
+
 </body>
 </html>
