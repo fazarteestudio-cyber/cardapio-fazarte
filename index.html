@@ -9,46 +9,56 @@
 
 <style>
 .tabs{
-  display:flex;
-  gap:10px;
-  padding:10px;
-  background:#111;
-  position:sticky;
-  top:0;
-  z-index:1000;
+display:flex;
+gap:10px;
+padding:10px;
+background:#111;
+position:sticky;
+top:0;
+z-index:1000;
 }
 
 .tabs button{
-  flex:1;
-  padding:12px;
-  border:none;
-  background:#333;
-  color:#fff;
-  cursor:pointer;
-  font-size:16px;
+flex:1;
+padding:12px;
+border:none;
+background:#333;
+color:#fff;
+cursor:pointer;
+font-size:16px;
 }
 
-.tabs button.active{
-  background:#c55a2b;
+.tabs button.active{background:#c55a2b;}
+
+.categoria{display:none;}
+.categoria.active{display:block;}
+
+.card{margin-bottom:15px;}
+
+.controle{
+display:flex;
+gap:10px;
+align-items:center;
+margin-top:10px;
 }
 
-.categoria{
-  display:none;
-}
-
-.categoria.active{
-  display:block;
+.controle button{
+padding:6px 12px;
+background:#c55a2b;
+border:none;
+color:white;
+font-size:18px;
 }
 
 .finalizar-btn{
-  width:100%;
-  padding:16px;
-  background:#c55a2b;
-  color:#fff;
-  border:none;
-  font-size:18px;
-  margin-top:15px;
-  cursor:pointer;
+width:100%;
+padding:16px;
+background:#c55a2b;
+color:white;
+border:none;
+font-size:18px;
+margin-top:15px;
+cursor:pointer;
 }
 </style>
 
@@ -57,118 +67,48 @@
 <body>
 
 <header class="topo">
-  <h1>Cardápio Digital</h1>
-  <p>Protótipo desenvolvido pela Fazarte</p>
+<h1>Cardápio Digital</h1>
+<p>Protótipo desenvolvido pela Fazarte</p>
 </header>
 
 <div class="tabs">
-  <button class="active" onclick="mostrarCategoria('lanches',this)">Lanches</button>
-  <button onclick="mostrarCategoria('bebidas',this)">Bebidas</button>
-  <button onclick="mostrarCategoria('pedido',this)">Pedido</button>
+<button class="active" onclick="mostrarCategoria('lanches',this)">Lanches</button>
+<button onclick="mostrarCategoria('bebidas',this)">Bebidas</button>
+<button onclick="mostrarCategoria('pedido',this)">Pedido</button>
 </div>
 
 <main class="container">
 
-<!-- LANCHES -->
-<section id="lanches" class="categoria active">
+<section id="lanches" class="categoria active"></section>
+<section id="bebidas" class="categoria"></section>
 
-  <div class="card">
-    <h3>Burger Clássico</h3>
-    <p>R$ 20</p>
-    <button onclick="adicionarItem('Burger Clássico',20)">Adicionar</button>
-  </div>
-
-  <div class="card">
-    <h3>Burger Bacon</h3>
-    <p>R$ 24</p>
-    <button onclick="adicionarItem('Burger Bacon',24)">Adicionar</button>
-  </div>
-
-  <div class="card">
-    <h3>Burger Duplo</h3>
-    <p>R$ 28</p>
-    <button onclick="adicionarItem('Burger Duplo',28)">Adicionar</button>
-  </div>
-
-  <div class="card">
-    <h3>Burger Premium</h3>
-    <p>R$ 32</p>
-    <button onclick="adicionarItem('Burger Premium',32)">Adicionar</button>
-  </div>
-
-  <div class="card">
-    <h3>Burger Salada</h3>
-    <p>R$ 22</p>
-    <button onclick="adicionarItem('Burger Salada',22)">Adicionar</button>
-  </div>
-
-  <div class="card">
-    <h3>Burger de Frango</h3>
-    <p>R$ 24</p>
-    <button onclick="adicionarItem('Burger de Frango',24)">Adicionar</button>
-  </div>
-
-</section>
-
-<!-- BEBIDAS -->
-<section id="bebidas" class="categoria">
-
-  <div class="card">
-    <h3>Refrigerante Lata</h3>
-    <p>R$ 6</p>
-    <button onclick="adicionarItem('Refrigerante Lata',6)">Adicionar</button>
-  </div>
-
-  <div class="card">
-    <h3>Refrigerante 600ml</h3>
-    <p>R$ 8</p>
-    <button onclick="adicionarItem('Refrigerante 600ml',8)">Adicionar</button>
-  </div>
-
-  <div class="card">
-    <h3>Refrigerante 2L</h3>
-    <p>R$ 12</p>
-    <button onclick="adicionarItem('Refrigerante 2L',12)">Adicionar</button>
-  </div>
-
-  <div class="card">
-    <h3>Água</h3>
-    <p>R$ 4</p>
-    <button onclick="adicionarItem('Água',4)">Adicionar</button>
-  </div>
-
-</section>
-
-<!-- PEDIDO -->
 <section id="pedido" class="categoria">
 
-  <ul id="lista-pedido"></ul>
+<ul id="lista-pedido"></ul>
 
-  <p>Total: R$ <span id="total">0</span></p>
+<p>Total: R$ <span id="total">0</span></p>
 
-  <input id="nomeCliente" placeholder="Nome"><br><br>
-  <input id="whatsCliente" placeholder="WhatsApp"><br><br>
-  <input id="enderecoCliente" placeholder="Rua, número, bairro"><br><br>
+<input id="nomeCliente" placeholder="Nome"><br><br>
+<input id="whatsCliente" placeholder="WhatsApp"><br><br>
+<input id="enderecoCliente" placeholder="Rua, número, bairro"><br><br>
 
-  <textarea id="observacao" placeholder="Observações"></textarea><br><br>
+<textarea id="observacao" placeholder="Observações"></textarea><br><br>
 
-  <label><input type="radio" name="pagamento" onclick="selecionarPagamento('pix')"> Pix</label>
-  <label><input type="radio" name="pagamento" onclick="selecionarPagamento('cartao')"> Cartão</label>
-  <label><input type="radio" name="pagamento" onclick="selecionarPagamento('dinheiro')"> Dinheiro</label>
+<label><input type="radio" name="pagamento" onclick="selecionarPagamento('pix')"> Pix</label>
+<label><input type="radio" name="pagamento" onclick="selecionarPagamento('cartao')"> Cartão</label>
+<label><input type="radio" name="pagamento" onclick="selecionarPagamento('dinheiro')"> Dinheiro</label>
 
-  <div id="troco-info" style="display:none">
-    <input id="troco" placeholder="Troco para">
-  </div>
+<div id="troco-info" style="display:none">
+<input id="troco" placeholder="Troco para">
+</div>
 
-  <button class="finalizar-btn" onclick="finalizarPedido()">
-    Finalizar no WhatsApp
-  </button>
+<button class="finalizar-btn" onclick="finalizarPedido()">Finalizar no WhatsApp</button>
 
 </section>
 
 </main>
 
-<script src="script.js?v=40"></script>
+<script src="script.js?v=50"></script>
 
 </body>
 </html>
