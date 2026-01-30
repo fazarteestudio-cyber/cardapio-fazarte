@@ -9,23 +9,23 @@
 
 <style>
 .tabs{
-display:flex;
-gap:10px;
-padding:10px;
-background:#111;
-position:sticky;
-top:0;
-z-index:1000;
+  display:flex;
+  gap:10px;
+  padding:10px;
+  background:#111;
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
 
 .tabs button{
-flex:1;
-padding:12px;
-border:none;
-background:#333;
-color:#fff;
-cursor:pointer;
-font-size:16px;
+  flex:1;
+  padding:12px;
+  border:none;
+  background:#333;
+  color:#fff;
+  cursor:pointer;
+  font-size:16px;
 }
 
 .tabs button.active{background:#c55a2b;}
@@ -36,29 +36,36 @@ font-size:16px;
 .card{margin-bottom:15px;}
 
 .controle{
-display:flex;
-gap:10px;
-align-items:center;
-margin-top:10px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin-top:10px;
 }
 
 .controle button{
-padding:6px 12px;
-background:#c55a2b;
-border:none;
-color:white;
-font-size:18px;
+  padding:6px 12px;
+  background:#c55a2b;
+  border:none;
+  color:white;
+  font-size:18px;
+  cursor:pointer;
+}
+
+.pedido-item{
+  margin-bottom:10px;
+  padding-bottom:10px;
+  border-bottom:1px solid #ddd;
 }
 
 .finalizar-btn{
-width:100%;
-padding:16px;
-background:#c55a2b;
-color:white;
-border:none;
-font-size:18px;
-margin-top:15px;
-cursor:pointer;
+  width:100%;
+  padding:16px;
+  background:#c55a2b;
+  color:white;
+  border:none;
+  font-size:18px;
+  margin-top:15px;
+  cursor:pointer;
 }
 </style>
 
@@ -67,14 +74,14 @@ cursor:pointer;
 <body>
 
 <header class="topo">
-<h1>Cardápio Digital</h1>
-<p>Protótipo desenvolvido pela Fazarte</p>
+  <h1>Cardápio Digital</h1>
+  <p>Protótipo desenvolvido pela Fazarte</p>
 </header>
 
 <div class="tabs">
-<button class="active" onclick="mostrarCategoria('lanches',this)">Lanches</button>
-<button onclick="mostrarCategoria('bebidas',this)">Bebidas</button>
-<button onclick="mostrarCategoria('pedido',this)">Pedido</button>
+  <button class="active" onclick="mostrarCategoria('lanches',this)">Lanches</button>
+  <button onclick="mostrarCategoria('bebidas',this)">Bebidas</button>
+  <button onclick="mostrarCategoria('pedido',this)">Pedido</button>
 </div>
 
 <main class="container">
@@ -84,31 +91,43 @@ cursor:pointer;
 
 <section id="pedido" class="categoria">
 
-<ul id="lista-pedido"></ul>
+  <div id="lista-pedido"></div>
 
-<p>Total: R$ <span id="total">0</span></p>
+  <p><strong>Total:</strong> R$ <span id="total">0</span></p>
 
-<input id="nomeCliente" placeholder="Nome"><br><br>
-<input id="whatsCliente" placeholder="WhatsApp"><br><br>
-<input id="enderecoCliente" placeholder="Rua, número, bairro"><br><br>
+  <input id="nomeCliente" placeholder="Nome"><br><br>
+  <input id="whatsCliente" placeholder="WhatsApp"><br><br>
+  <input id="enderecoCliente" placeholder="Rua, número, bairro"><br><br>
 
-<textarea id="observacao" placeholder="Observações"></textarea><br><br>
+  <textarea id="observacao" placeholder="Observações"></textarea><br><br>
 
-<label><input type="radio" name="pagamento" onclick="selecionarPagamento('pix')"> Pix</label>
-<label><input type="radio" name="pagamento" onclick="selecionarPagamento('cartao')"> Cartão</label>
-<label><input type="radio" name="pagamento" onclick="selecionarPagamento('dinheiro')"> Dinheiro</label>
+  <h3>Forma de pagamento</h3>
 
-<div id="troco-info" style="display:none">
-<input id="troco" placeholder="Troco para">
-</div>
+  <label><input type="radio" name="pagamento" onclick="selecionarPagamento('pix')"> Pix</label><br>
+  <label><input type="radio" name="pagamento" onclick="selecionarPagamento('cartao')"> Cartão</label><br>
+  <label><input type="radio" name="pagamento" onclick="selecionarPagamento('dinheiro')"> Dinheiro</label>
 
-<button class="finalizar-btn" onclick="finalizarPedido()">Finalizar no WhatsApp</button>
+  <!-- PIX INFO -->
+  <div id="pix-info" style="display:none;margin-top:10px;">
+    <p><strong>Chave Pix:</strong> pix@fazarte.com</p>
+    <p>Após realizar o Pix, envie o comprovante neste WhatsApp.</p>
+  </div>
+
+  <!-- TROCO -->
+  <div id="troco-info" style="display:none;margin-top:10px;">
+    <label>Precisa de troco? Para quanto?</label><br>
+    <input id="troco" placeholder="Ex: 50 ou 100">
+  </div>
+
+  <button class="finalizar-btn" onclick="finalizarPedido()">
+    Finalizar no WhatsApp
+  </button>
 
 </section>
 
 </main>
 
-<script src="script.js?v=50"></script>
+<script src="script.js?v=70"></script>
 
 </body>
 </html>
